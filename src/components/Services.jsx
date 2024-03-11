@@ -1,10 +1,23 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from "react";
 // motion
 import { motion } from "framer-motion";
 // variants
 import { fadeIn } from "../variants";
+import axios from 'axios'
 
-const Services = () => {
+const Services = ({ url }) => {
+  const [data, setData] = useState(null);
+  const fetchData = async () => {
+
+    await axios.get(`${url.url}/get_partners`).then((res) => {
+      setData(res.data?.data);
+    }).catch((err) => console.ldog(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
   const services = [
     {
       id: 1,
@@ -44,13 +57,11 @@ const Services = () => {
           We have been working with some Fortune 500+ clients
         </p>
         <div className="my-12 flex flex-wrap justify-between items-center gap-8 ">
-          <img src="src/assets/icons/company1.png" alt="" />
-          <img src="src/assets/icons/company2.png" alt="" />
-          <img src="src/assets/icons/company3.png" alt="" />
-          <img src="src/assets/icons/company4.png" alt="" />
-          <img src="src/assets/icons/company5.png" alt="" />
-          <img src="src/assets/icons/company6.png" alt="" />
-          <img src="src/assets/icons/company7.png" alt="" />
+          {data?.map((item) => {
+            return <img src={item?.image} alt="" key={item.id} className="parterImage"/>;
+
+          })}
+
         </div>
       </motion.div>
 

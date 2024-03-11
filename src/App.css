@@ -12,3 +12,14 @@ header{
 .btn-primary{
     @apply bg-brandPrimary text-white  py-2 px-4 transition-all duration-300 rounded hover:bg-neutralDGrey hover:-translate-y-2;
 }
+.parterImage{
+    width: 100px !important;
+    height: 100px !important ;
+}
+
+@media(max-width:480px){
+    .parterImage{
+        width: 50px !important;
+        height: 50px !important ;
+    }
+}

@@ -1,17 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Footer, Label, TextInput } from "flowbite-react";
 import {
   BsFacebook,
-  BsGithub,
   BsInstagram,
-  BsMailbox,
-  BsMailbox2,
-  BsTwitter,
+  BsLinkedin
 } from "react-icons/bs";
 import { SiMinutemailer } from "react-icons/si";
-import logo from "../assets/logo.png";
 
-const MyFooter = () => {
+
+const MyFooter = ({ data }) => {
+  const IconFooter = ({type}) => {
+    switch (type) {
+      case 'facebook': return <BsFacebook />
+      case "instagram": return <BsInstagram />
+      case "linkedin": return <BsLinkedin />
+      default:
+        return <></>;
+    }
+  }
   return (
     <footer className="bg-neutralBlack text-white">
       <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto py-12">
@@ -22,22 +29,23 @@ const MyFooter = () => {
               className="text-2xl font-semibold flex items-center space-x-3"
             >
               <img
-                src={logo}
+                src={data?.footer_icon}
                 alt=""
-                className="w-10 inline-block items-center"
+                className="w-20 inline-block items-center"
               />
-              <span>NEXCENT</span>
+              <span>{data?.site_name}</span>
             </a>
             <div className="my-8">
-              <p className="mb-1"> Copyright © 2020 Nexcent ltd.</p>
-              <p>All rights reserved</p>
+              <p className="mb-1">Email: {data?.email}</p>
+              
             </div>
 
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-start text-white">
-              <Footer.Icon href="#" icon={BsFacebook} className="text-white" />
-              <Footer.Icon href="#" icon={BsInstagram} className="text-white" />
-              <Footer.Icon href="#" icon={BsTwitter} className="text-white" />
-              <Footer.Icon href="#" icon={BsGithub} className="text-white" />
+             {data?.social_media.map((item)=>{
+              return <a href={item.link} target="_blank"  rel="noreferrer" key={item.id}>
+                     <IconFooter type={item?.type}/>
+              </a>
+             })}
             </div>
           </div>
           <div className="md:w-2/3 grid grid-cols-2 gap-8 items-start sm:mt-4 sm:grid-cols-3 sm:gap-6 text-white">

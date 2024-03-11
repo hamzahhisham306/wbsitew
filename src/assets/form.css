@@ -1,0 +1,60 @@
+.my-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(158, 158, 158, 0.16);
+    background-color: #ffffff;
+    }
+.form-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-wrap: wrap;
+}
+  .my-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .my-form input,
+  .my-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    outline: none !important;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}
+/* .my-form input:hover{
+ border: 1px solid #ff5d22;
+} */
+  
+  .my-form button {
+    background-color: #fff;
+    color: #ff5d22;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .my-form {
+      max-width: 600px;
+    }
+  }
+  
